@@ -6,6 +6,7 @@ const RootSchema = new mongoose.Schema({
   tC: { type: String, required: true },
   eh: { type: String, required: true },
   tds: { type: String, required: true },
+  time: { type: String, required: true },
 }, { timestamps: true }); 
 
 module.exports = mongoose.model('Root', RootSchema);
