@@ -5,7 +5,7 @@ const errorHandler = require("./middlewares/errorHandler");
 // Routes
 const cityRoutes = require("./routes/cityRoutes");
 const tourismRoutes = require("./routes/tourismRoutes");
-const feedbackRoutes = require("./routes/feedbackRoutes");
+const rootRoutes = require("./routes/rootRoutes");
 const app = express();
 
 // Middlewares
@@ -21,7 +21,7 @@ app.use(errorHandler);
 app.get("/", (_, res) => res.send("ok"));
 app.use("/api/cities", cityRoutes);
 app.use("/api/tourism", tourismRoutes);
-app.use("/api/feedback", feedbackRoutes);
+app.use("/api/root", rootRoutes);
 
 // 404 Error
 app.use((req, res, next) => {
