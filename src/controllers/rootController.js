@@ -2,7 +2,7 @@ const Root = require("../models/Root");
 
 exports.getAllRoot = async (req, res) => {
   try {
-    const root = await Root.find({}, "chuqurlik pH tC eh tds time createdAt updatedAt");
+    const root = await Root.find({}, "temperature tds waterLevel createdAt updatedAt");
     res.status(200).json(root);
   } catch (error) {
     res.status(500).json({
@@ -33,15 +33,16 @@ exports.getRootById = async (req, res) => {
 
 exports.createRoot = async (req, res) => {
   try {
-    const { chuqurlik, pH, tC, eh, tds, time } = req.body;
+    const {
+      temperature,
+      tds,
+      waterLevel
+    } = req.body;
 
     const root = new Root({
-      chuqurlik,
-      pH,
-      tC,
-      eh,
+      temperature,
       tds,
-      time,
+      waterLevel
     });
 
     await root.save();
@@ -49,12 +50,9 @@ exports.createRoot = async (req, res) => {
       data: {
         message: "Root created successfully",
         root: {
-          chuqurlik,
-          pH,
-          tC,
-          eh,
+          temperature,
           tds,
-          time,
+          waterLevel,
           createdAt: root.createdAt,
           updatedAt: root.updatedAt,
         },
